@@ -1,23 +1,33 @@
 package com.example.estudo.apigateway.startup.VO.V1;
 
-public class PersonVO {
+import org.springframework.hateoas.RepresentationModel;
 
-    private Long id;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.github.dozermapper.core.Mapping;
 
+@JsonPropertyOrder({ "id", "first_name", "last_name","address", "gender" })
+public class PersonVO extends RepresentationModel<PersonVO> {
+
+    @Mapping("id")
+    @JsonProperty("id")
+    private Long key;
+
+    @JsonProperty("first_name")
     private String firstName;
-
+    @JsonProperty("last_name")
     private String lastName;
 
     private String address;
 
     private String gender;
 
-    public Long getId() {
-        return id;
+    public Long getKey() {
+        return key;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setKey(Long id) {
+        this.key = id;
     }
 
     public String getFirstName() {
